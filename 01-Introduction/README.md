@@ -1553,3 +1553,2459 @@ No. Every .NET application requires the CLR to execute.
 * JIT Compilation
 
 
+
+
+# CLR Runtime Services 
+
+The **Common Language Runtime (CLR)** provides many runtime services that help execute .NET applications efficiently and safely.
+
+The major runtime services are:
+
+* Memory Management
+* Garbage Collection
+* Security
+
+---
+
+# 1. Memory Management
+
+## What is Memory Management?
+
+Memory Management is the process of **allocating**, **using**, and **releasing** memory while a program is running.
+
+The CLR automatically manages memory for .NET applications.
+
+Developers do **not** need to manually allocate or free memory.
+
+---
+
+## Why is Memory Management Required?
+
+Without memory management:
+
+* Memory can become full.
+* Applications become slow.
+* Memory leaks may occur.
+* The application may crash.
+
+---
+
+## How Memory Management Works
+
+```text
+Object Created
+       │
+       ▼
+CLR Allocates Memory
+       │
+       ▼
+Object is Used
+       │
+       ▼
+Object Becomes Unused
+       │
+       ▼
+Garbage Collector Frees Memory
+```
+
+---
+
+## Example
+
+```csharp
+class Student
+{
+    public string Name;
+}
+
+Student s = new Student();
+```
+
+### Explanation
+
+When the object is created,
+
+```csharp
+new Student();
+```
+
+CLR allocates memory in the **Heap**.
+
+---
+
+## Real-Life Example
+
+Imagine a **hotel**.
+
+When a customer arrives,
+
+the receptionist assigns a room.
+
+When the customer leaves,
+
+the room becomes available for another customer.
+
+Similarly,
+
+CLR allocates memory when an object is created and releases it when the object is no longer needed.
+
+---
+
+## Diagram
+
+```text
+Student s = new Student();
+
+        │
+
+        ▼
+
+CLR
+
+        │
+
+        ▼
+
+Heap Memory
+
++----------------+
+| Student Object |
++----------------+
+```
+
+---
+
+## ⭐ Interview Tips
+
+* CLR manages memory automatically.
+* Objects are stored in the Heap.
+* Developers do not manually free memory.
+* Memory is released by the Garbage Collector.
+
+---
+
+## ❓Interview Questions
+
+### What is Memory Management?
+
+Memory Management is the process of allocating and releasing memory while a program is executing.
+
+---
+
+### Who manages memory in .NET?
+
+The **CLR** manages memory.
+
+---
+
+### Why is Memory Management important?
+
+It improves performance and prevents memory leaks.
+
+---
+
+# 2. Garbage Collection (GC)
+
+## What is Garbage Collection?
+
+Garbage Collection is the automatic process of removing **unused objects** from memory.
+
+It is handled by the **Garbage Collector (GC)**.
+
+---
+
+## Why is Garbage Collection Required?
+
+Suppose you create many objects.
+
+Some objects are no longer used.
+
+If they remain in memory,
+
+memory usage continuously increases.
+
+Garbage Collection removes these unused objects automatically.
+
+---
+
+## Working
+
+```text
+Object Created
+
+      │
+
+      ▼
+
+Object Used
+
+      │
+
+      ▼
+
+Object No Longer Used
+
+      │
+
+      ▼
+
+Garbage Collector Removes It
+
+      │
+
+      ▼
+
+Memory Becomes Free
+```
+
+---
+
+## Example
+
+```csharp
+class Student
+{
+}
+
+Student s = new Student();
+
+s = null;
+```
+
+### Explanation
+
+The object still exists in the Heap.
+
+However,
+
+no variable references it anymore.
+
+Later,
+
+the Garbage Collector automatically removes it.
+
+---
+
+## Real-Life Example
+
+Imagine your room.
+
+Books,
+
+empty bottles,
+
+paper,
+
+old newspapers...
+
+When they are no longer useful,
+
+your mother throws them away.
+
+Exactly the same,
+
+Garbage Collector removes unused objects from memory.
+
+---
+
+## Diagram
+
+```text
+Heap
+
++----------------+
+| Student Object |
++----------------+
+        ▲
+        │
+     s = null
+
+        │
+
+        ▼
+
+Garbage Collector
+
+        │
+
+        ▼
+
+Memory Released
+```
+
+---
+
+## ⭐ Interview Tips
+
+* GC removes unused objects.
+* GC works only on Heap memory.
+* Developers do not manually delete objects.
+* GC runs automatically.
+
+---
+
+## ❓Interview Questions
+
+### What is Garbage Collection?
+
+Garbage Collection is the automatic process of removing unused objects from Heap memory.
+
+---
+
+### Does GC remove Stack Memory?
+
+No.
+
+GC works only with Heap memory.
+
+---
+
+### Who performs Garbage Collection?
+
+The CLR's Garbage Collector.
+
+---
+
+### Does GC run immediately?
+
+No.
+
+The CLR decides when to execute the Garbage Collector.
+
+---
+
+# 3. Security
+
+## What is Security?
+
+CLR provides security features to protect applications from executing unsafe or malicious code.
+
+It helps prevent unauthorized operations and improves application safety.
+
+---
+
+## Why is Security Required?
+
+Without security,
+
+applications may:
+
+* Access invalid memory.
+* Execute malicious code.
+* Corrupt system resources.
+* Become unstable.
+
+---
+
+## Example
+
+```csharp
+string age = "Twenty";
+
+int number = Convert.ToInt32(age);
+```
+
+The CLR detects invalid conversions and throws an exception instead of allowing incorrect execution.
+
+---
+
+## Real-Life Example
+
+Think of airport security.
+
+Every passenger is checked before entering the airport.
+
+Similarly,
+
+CLR verifies code before allowing it to execute.
+
+---
+
+## Diagram
+
+```text
+Program
+
+      │
+
+      ▼
+
+CLR Security Check
+
+      │
+
+      ▼
+
+Safe Code
+
+      │
+
+      ▼
+
+Program Executes
+```
+
+---
+
+## ⭐ Interview Tips
+
+* CLR provides application security.
+* It prevents unsafe execution.
+* Security is handled automatically by the CLR.
+
+---
+
+## ❓Interview Questions
+
+### What is CLR Security?
+
+CLR Security protects .NET applications from executing unsafe code.
+
+---
+
+### Why is Security important?
+
+It protects applications and system resources from invalid or malicious operations.
+
+---
+
+# Summary
+
+| Runtime Service    | Description                                |
+| ------------------ | ------------------------------------------ |
+| Memory Management  | Allocates and manages memory automatically |
+| Garbage Collection | Removes unused objects from Heap memory    |
+| Security           | Protects applications from unsafe code     |
+
+---
+
+# Quick Revision
+
+| Topic              | Remember This                              |
+| ------------------ | ------------------------------------------ |
+| Memory Management  | CLR allocates memory                       |
+| Garbage Collection | GC removes unused Heap objects             |
+| Security           | CLR protects applications from unsafe code |
+
+
+
+
+# CLR Runtime Services 
+
+The **Common Language Runtime (CLR)** provides several runtime services that help execute .NET applications efficiently.
+
+In this section, we will learn about:
+
+* Exception Handling
+* Thread Management
+* JIT (Just-In-Time) Compilation
+
+---
+
+# 1. Exception Handling
+
+## What is Exception Handling?
+
+**Exception Handling** is a mechanism that allows a program to handle runtime errors without crashing.
+
+CLR automatically detects exceptions and transfers control to the appropriate `catch` block.
+
+---
+
+## Why is Exception Handling Required?
+
+Without exception handling:
+
+* The application may crash.
+* Users may lose data.
+* The program may terminate unexpectedly.
+
+Exception handling makes applications more reliable.
+
+---
+
+## Example
+
+```csharp
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        try
+        {
+            int number = 10;
+            int result = number / 0;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+
+        Console.WriteLine("Program Continues...");
+    }
+}
+```
+
+### Output
+
+```text
+Attempted to divide by zero.
+Program Continues...
+```
+
+### Explanation
+
+* An exception occurs because division by zero is not allowed.
+* CLR detects the exception.
+* Control moves to the `catch` block.
+* The application continues running.
+
+---
+
+## Working
+
+```text
+Program Starts
+       │
+       ▼
+Exception Occurs
+       │
+       ▼
+CLR Detects Exception
+       │
+       ▼
+Catch Block Executes
+       │
+       ▼
+Program Continues
+```
+
+---
+
+## Real-Life Example
+
+Imagine you are driving a car.
+
+Suddenly, a tyre gets punctured.
+
+Instead of abandoning the car, you replace the tyre and continue your journey.
+
+Exception handling works in the same way.
+
+---
+
+## ⭐ Interview Tips
+
+* CLR automatically detects runtime exceptions.
+* `try`, `catch`, and `finally` are used for exception handling.
+* Exception handling prevents application crashes.
+
+---
+
+## ❓Interview Questions
+
+### What is Exception Handling?
+
+Exception Handling is a mechanism for handling runtime errors so that the application continues executing safely.
+
+---
+
+### Who handles exceptions in .NET?
+
+The **CLR** detects exceptions and works with the exception handling mechanism (`try-catch-finally`).
+
+---
+
+### What happens if an exception is not handled?
+
+The application may terminate unexpectedly.
+
+---
+
+# 2. Thread Management
+
+## What is Thread Management?
+
+A **Thread** is the smallest unit of execution inside a process.
+
+CLR manages the creation, execution, and scheduling of threads.
+
+---
+
+## Why is Thread Management Required?
+
+It allows applications to perform multiple tasks simultaneously.
+
+Example:
+
+* Downloading a file
+* Playing music
+* Updating the UI
+
+All can happen at the same time.
+
+---
+
+## Example
+
+```csharp
+using System;
+using System.Threading;
+
+class Program
+{
+    static void PrintMessage()
+    {
+        Console.WriteLine("Running on another thread...");
+    }
+
+    static void Main()
+    {
+        Thread thread = new Thread(PrintMessage);
+        thread.Start();
+
+        Console.WriteLine("Main Thread");
+    }
+}
+```
+
+---
+
+## Working
+
+```text
+Application Starts
+        │
+        ▼
+Main Thread
+        │
+        ├──────────────┐
+        │              │
+        ▼              ▼
+Worker Thread      Main Thread
+        │              │
+        ▼              ▼
+Both Execute Simultaneously
+```
+
+---
+
+## Real-Life Example
+
+Imagine a restaurant.
+
+One waiter takes orders.
+
+Another serves food.
+
+A third prepares the bill.
+
+Everyone works at the same time.
+
+This is similar to multithreading.
+
+---
+
+## ⭐ Interview Tips
+
+* A process can have multiple threads.
+* CLR manages thread execution.
+* Threads improve application responsiveness.
+
+---
+
+## ❓Interview Questions
+
+### What is a Thread?
+
+A thread is the smallest unit of execution within a process.
+
+---
+
+### Who manages threads in .NET?
+
+The CLR manages thread creation and execution.
+
+---
+
+### Why is multithreading used?
+
+To execute multiple tasks simultaneously and improve performance.
+
+---
+
+# 3. JIT (Just-In-Time) Compilation
+
+## What is JIT?
+
+**JIT (Just-In-Time) Compiler** converts **Intermediate Language (IL)** into **Native Machine Code** at runtime.
+
+The CPU can execute only Machine Code.
+
+---
+
+## Why is JIT Required?
+
+The CPU cannot understand IL directly.
+
+Therefore, IL must first be converted into Machine Code.
+
+This conversion is performed by the JIT Compiler.
+
+---
+
+## Execution Flow
+
+```text
+C# Source Code
+        │
+        ▼
+C# Compiler
+        │
+        ▼
+IL Code
+        │
+        ▼
+CLR
+        │
+        ▼
+JIT Compiler
+        │
+        ▼
+Machine Code
+        │
+        ▼
+CPU
+```
+
+---
+
+## Example
+
+```csharp
+Console.WriteLine("Hello World");
+```
+
+### Execution
+
+```text
+C# Code
+      │
+      ▼
+Compiler
+      │
+      ▼
+IL Code
+      │
+      ▼
+JIT Compiler
+      │
+      ▼
+Machine Code
+      │
+      ▼
+CPU
+```
+
+---
+
+## Real-Life Example
+
+Suppose a book is written in English.
+
+A translator converts it into Hindi before you read it.
+
+* English Book → IL Code
+* Translator → JIT Compiler
+* Hindi Book → Machine Code
+
+The CPU understands only the final translated version (Machine Code).
+
+---
+
+## ⭐ Interview Tips
+
+* JIT stands for **Just-In-Time Compiler**.
+* JIT converts IL into Machine Code.
+* JIT works at runtime.
+* The CPU executes Machine Code, not IL.
+
+---
+
+## ❓Interview Questions
+
+### What is JIT?
+
+JIT (Just-In-Time Compiler) converts IL into native Machine Code during program execution.
+
+---
+
+### Does JIT compile C# code directly?
+
+No.
+
+The C# Compiler first converts C# into IL.
+
+Then JIT converts IL into Machine Code.
+
+---
+
+### What is the difference between the C# Compiler and the JIT Compiler?
+
+| C# Compiler                | JIT Compiler                |
+| -------------------------- | --------------------------- |
+| Converts C# to IL          | Converts IL to Machine Code |
+| Executes during build time | Executes during runtime     |
+
+---
+
+### Why is JIT important?
+
+JIT allows .NET applications to execute efficiently by converting platform-independent IL into native Machine Code.
+
+---
+
+# Complete CLR Runtime Flow
+
+```text
+C# Source Code
+       │
+       ▼
+C# Compiler
+       │
+       ▼
+Intermediate Language (IL)
+       │
+       ▼
+CLR
+├── Memory Management
+├── Garbage Collection
+├── Security
+├── Exception Handling
+├── Thread Management
+└── JIT Compilation
+       │
+       ▼
+Machine Code
+       │
+       ▼
+CPU
+```
+
+---
+
+# Summary
+
+| Runtime Service    | Description                                             |
+| ------------------ | ------------------------------------------------------- |
+| Exception Handling | Handles runtime errors without crashing the application |
+| Thread Management  | Manages thread creation and execution                   |
+| JIT Compilation    | Converts IL into Machine Code at runtime                |
+
+---
+
+# Quick Revision
+
+| Topic              | Remember This                                           |
+| ------------------ | ------------------------------------------------------- |
+| Exception Handling | Prevents application crashes by handling runtime errors |
+| Thread Management  | Executes multiple tasks concurrently                    |
+| JIT Compiler       | Converts IL to Machine Code before execution            |
+
+
+# Thread Management in C#
+
+## What is a Thread?
+
+A **Thread** is the **smallest unit of execution** inside a process.
+
+A process can contain one or more threads.
+
+Each thread performs a specific task.
+
+---
+
+# What is a Process?
+
+A **Process** is a running application.
+
+Examples:
+
+* Google Chrome
+* Visual Studio
+* Microsoft Word
+* Calculator
+
+Each application running on your computer is a separate process.
+
+---
+
+# Relationship Between Process and Thread
+
+```text
+Process (Application)
+
+│
+
+├── Thread 1 (UI)
+
+├── Thread 2 (Download)
+
+├── Thread 3 (Background Task)
+
+└── Thread 4 (Save File)
+```
+
+A single process can have multiple threads running simultaneously.
+
+---
+
+# Why Do We Need Threads?
+
+Threads allow an application to perform multiple tasks at the same time.
+
+For example:
+
+* Downloading a file
+* Playing music
+* Updating the user interface
+* Reading data from a database
+
+These tasks can run concurrently.
+
+---
+
+# Example
+
+```csharp
+using System;
+using System.Threading;
+
+class Program
+{
+    static void Download()
+    {
+        Console.WriteLine("Downloading File...");
+    }
+
+    static void Main()
+    {
+        Thread downloadThread = new Thread(Download);
+
+        downloadThread.Start();
+
+        Console.WriteLine("Main Thread Running...");
+    }
+}
+```
+
+### Possible Output
+
+```text
+Main Thread Running...
+Downloading File...
+```
+
+> **Note:** The exact order of the output may vary because both threads execute independently.
+
+---
+
+# How CLR Manages Threads
+
+```text
+Application Starts
+        │
+        ▼
+Main Thread Created
+        │
+        ▼
+Additional Threads Created
+        │
+        ▼
+CLR Schedules Threads
+        │
+        ▼
+Tasks Execute Concurrently
+```
+
+The CLR is responsible for:
+
+* Creating threads
+* Managing thread execution
+* Scheduling threads
+* Releasing thread resources when they finish
+
+---
+
+# Real-Life Example
+
+Imagine a restaurant.
+
+```text
+Restaurant (Process)
+
+│
+
+├── Waiter (Thread)
+
+├── Chef (Thread)
+
+└── Cashier (Thread)
+```
+
+Each employee performs a different task at the same time.
+
+Similarly, a process uses multiple threads to perform different tasks concurrently.
+
+---
+
+# Advantages of Threads
+
+* Improves application performance
+* Keeps the user interface responsive
+* Executes multiple tasks simultaneously
+* Better utilization of CPU resources
+
+---
+
+# Process vs Thread
+
+| Process                      | Thread                     |
+| ---------------------------- | -------------------------- |
+| Running application          | Smallest unit of execution |
+| Heavyweight                  | Lightweight                |
+| Has its own memory           | Shares the process memory  |
+| Can contain multiple threads | Exists inside a process    |
+
+---
+
+# ⭐ Interview Tips
+
+* A **Process** is a running application.
+* A **Thread** is the smallest unit of execution.
+* Every process has at least one thread called the **Main Thread**.
+* A process can have multiple threads.
+* CLR manages thread creation and execution.
+* Threads share the memory of their process.
+
+---
+
+# ❓Common Interview Questions
+
+## 1. What is a Thread?
+
+**Answer:**
+
+A thread is the smallest unit of execution inside a process. It performs a specific task within an application.
+
+---
+
+## 2. What is a Process?
+
+**Answer:**
+
+A process is a running instance of an application.
+
+---
+
+## 3. What is the difference between a Process and a Thread?
+
+**Answer:**
+
+A process is an independent running application, while a thread is the smallest unit of execution inside a process.
+
+---
+
+## 4. Can a Process have multiple Threads?
+
+**Answer:**
+
+Yes.
+
+A single process can contain multiple threads that execute different tasks simultaneously.
+
+---
+
+## 5. Who manages Threads in .NET?
+
+**Answer:**
+
+The **Common Language Runtime (CLR)** manages thread creation, scheduling, execution, and cleanup.
+
+---
+
+## 6. What is the Main Thread?
+
+**Answer:**
+
+The Main Thread is the first thread created when a .NET application starts.
+
+---
+
+## 7. Why do we use Threads?
+
+**Answer:**
+
+Threads allow applications to perform multiple tasks concurrently, improving responsiveness and performance.
+
+---
+
+## 8. Do Threads have separate memory?
+
+**Answer:**
+
+No.
+
+Threads share the memory of the same process, but each thread has its own execution stack.
+
+---
+
+# Summary
+
+| Topic          | Description                                     |
+| -------------- | ----------------------------------------------- |
+| Process        | Running application                             |
+| Thread         | Smallest unit of execution                      |
+| CLR            | Manages thread execution                        |
+| Main Thread    | First thread created when an application starts |
+| Multithreading | Running multiple threads concurrently           |
+
+
+
+# Thread Management in C#
+
+## What is a Thread?
+
+A **Thread** is the **smallest unit of execution** inside a process.
+
+A process can contain one or more threads.
+
+Each thread performs a specific task.
+
+---
+
+# What is a Process?
+
+A **Process** is a running application.
+
+Examples:
+
+* Google Chrome
+* Visual Studio
+* Microsoft Word
+* Calculator
+
+Each application running on your computer is a separate process.
+
+---
+
+# Relationship Between Process and Thread
+
+```text
+Process (Application)
+
+│
+
+├── Thread 1 (UI)
+
+├── Thread 2 (Download)
+
+├── Thread 3 (Background Task)
+
+└── Thread 4 (Save File)
+```
+
+A single process can have multiple threads running simultaneously.
+
+---
+
+# Why Do We Need Threads?
+
+Threads allow an application to perform multiple tasks at the same time.
+
+For example:
+
+* Downloading a file
+* Playing music
+* Updating the user interface
+* Reading data from a database
+
+These tasks can run concurrently.
+
+---
+
+# Example
+
+```csharp
+using System;
+using System.Threading;
+
+class Program
+{
+    static void Download()
+    {
+        Console.WriteLine("Downloading File...");
+    }
+
+    static void Main()
+    {
+        Thread downloadThread = new Thread(Download);
+
+        downloadThread.Start();
+
+        Console.WriteLine("Main Thread Running...");
+    }
+}
+```
+
+### Possible Output
+
+```text
+Main Thread Running...
+Downloading File...
+```
+
+> **Note:** The exact order of the output may vary because both threads execute independently.
+
+---
+
+# How CLR Manages Threads
+
+```text
+Application Starts
+        │
+        ▼
+Main Thread Created
+        │
+        ▼
+Additional Threads Created
+        │
+        ▼
+CLR Schedules Threads
+        │
+        ▼
+Tasks Execute Concurrently
+```
+
+The CLR is responsible for:
+
+* Creating threads
+* Managing thread execution
+* Scheduling threads
+* Releasing thread resources when they finish
+
+---
+
+# Real-Life Example
+
+Imagine a restaurant.
+
+```text
+Restaurant (Process)
+
+│
+
+├── Waiter (Thread)
+
+├── Chef (Thread)
+
+└── Cashier (Thread)
+```
+
+Each employee performs a different task at the same time.
+
+Similarly, a process uses multiple threads to perform different tasks concurrently.
+
+---
+
+# Advantages of Threads
+
+* Improves application performance
+* Keeps the user interface responsive
+* Executes multiple tasks simultaneously
+* Better utilization of CPU resources
+
+---
+
+# Process vs Thread
+
+| Process                      | Thread                     |
+| ---------------------------- | -------------------------- |
+| Running application          | Smallest unit of execution |
+| Heavyweight                  | Lightweight                |
+| Has its own memory           | Shares the process memory  |
+| Can contain multiple threads | Exists inside a process    |
+
+---
+
+# ⭐ Interview Tips
+
+* A **Process** is a running application.
+* A **Thread** is the smallest unit of execution.
+* Every process has at least one thread called the **Main Thread**.
+* A process can have multiple threads.
+* CLR manages thread creation and execution.
+* Threads share the memory of their process.
+
+---
+
+# ❓Common Interview Questions
+
+## 1. What is a Thread?
+
+**Answer:**
+
+A thread is the smallest unit of execution inside a process. It performs a specific task within an application.
+
+---
+
+## 2. What is a Process?
+
+**Answer:**
+
+A process is a running instance of an application.
+
+---
+
+## 3. What is the difference between a Process and a Thread?
+
+**Answer:**
+
+A process is an independent running application, while a thread is the smallest unit of execution inside a process.
+
+---
+
+## 4. Can a Process have multiple Threads?
+
+**Answer:**
+
+Yes.
+
+A single process can contain multiple threads that execute different tasks simultaneously.
+
+---
+
+## 5. Who manages Threads in .NET?
+
+**Answer:**
+
+The **Common Language Runtime (CLR)** manages thread creation, scheduling, execution, and cleanup.
+
+---
+
+## 6. What is the Main Thread?
+
+**Answer:**
+
+The Main Thread is the first thread created when a .NET application starts.
+
+---
+
+## 7. Why do we use Threads?
+
+**Answer:**
+
+Threads allow applications to perform multiple tasks concurrently, improving responsiveness and performance.
+
+---
+
+## 8. Do Threads have separate memory?
+
+**Answer:**
+
+No.
+
+Threads share the memory of the same process, but each thread has its own execution stack.
+
+---
+
+# Summary
+
+| Topic          | Description                                     |
+| -------------- | ----------------------------------------------- |
+| Process        | Running application                             |
+| Thread         | Smallest unit of execution                      |
+| CLR            | Manages thread execution                        |
+| Main Thread    | First thread created when an application starts |
+| Multithreading | Running multiple threads concurrently           |
+
+
+# ⭐ Most Asked Operator Interview Questions in C#
+
+## 1. Difference Between `=` and `==`
+
+These two operators are commonly confused.
+
+| `=` (Assignment Operator)     | `==` (Equality Operator) |
+| ----------------------------- | ------------------------ |
+| Assigns a value to a variable | Compares two values      |
+| Does not return True/False    | Returns True or False    |
+| Used for assignment           | Used in conditions       |
+
+### Example
+
+```csharp
+int a = 10;   // Assignment
+
+Console.WriteLine(a == 10);   // Comparison
+```
+
+### Output
+
+```text
+True
+```
+
+### Interview Tip ⭐
+
+Remember:
+
+* `=` → Assign Value
+* `==` → Compare Value
+
+---
+
+## 2. Difference Between `++i` and `i++`
+
+Both increase the value by **1**, but the order is different.
+
+### Pre-Increment (`++i`)
+
+First increases the value, then uses it.
+
+```csharp
+int i = 5;
+
+Console.WriteLine(++i);
+```
+
+Output
+
+```text
+6
+```
+
+---
+
+### Post-Increment (`i++`)
+
+First uses the current value, then increases it.
+
+```csharp
+int i = 5;
+
+Console.WriteLine(i++);
+Console.WriteLine(i);
+```
+
+Output
+
+```text
+5
+6
+```
+
+### Interview Tip ⭐
+
+* `++i` → Increment First
+* `i++` → Use First
+
+---
+
+## 3. Difference Between `&&` and `&`
+
+### `&&` (Logical AND)
+
+Uses **Short-Circuit Evaluation**.
+
+If the first condition is **false**, the second condition is **not checked**.
+
+```csharp
+int a = 10;
+
+if(a > 20 && a < 50)
+{
+    Console.WriteLine("True");
+}
+```
+
+Here, `a > 20` is false, so `a < 50` is not evaluated.
+
+---
+
+### `&` (Bitwise AND / Non-Short-Circuit AND)
+
+Evaluates **both conditions**, even if the first one is false.
+
+```csharp
+if(a > 20 & a < 50)
+{
+    Console.WriteLine("True");
+}
+```
+
+Both expressions are checked.
+
+---
+
+### Interview Tip ⭐
+
+* `&&` → Stops early (Short-Circuit)
+* `&` → Always evaluates both operands
+
+---
+
+## 4. Difference Between `||` and `|`
+
+### `||` (Logical OR)
+
+If the first condition is **true**, the second condition is **not evaluated**.
+
+```csharp
+int age = 25;
+
+if(age > 18 || age < 10)
+{
+    Console.WriteLine("Eligible");
+}
+```
+
+Since `age > 18` is true, the second condition is skipped.
+
+---
+
+### `|` (Bitwise OR / Non-Short-Circuit OR)
+
+Evaluates **both conditions**, regardless of the first result.
+
+---
+
+### Interview Tip ⭐
+
+* `||` → Short-Circuit OR
+* `|` → Always evaluates both operands
+
+---
+
+## 5. Ternary Operator (`?:`)
+
+The ternary operator is a short form of an `if-else` statement.
+
+### Syntax
+
+```csharp
+condition ? value_if_true : value_if_false;
+```
+
+### Example
+
+```csharp
+int marks = 75;
+
+string result = marks >= 40 ? "Pass" : "Fail";
+
+Console.WriteLine(result);
+```
+
+### Output
+
+```text
+Pass
+```
+
+### Equivalent Using if-else
+
+```csharp
+if(marks >= 40)
+{
+    Console.WriteLine("Pass");
+}
+else
+{
+    Console.WriteLine("Fail");
+}
+```
+
+---
+
+## 6. Null-Coalescing Operator (`??`)
+
+Returns the left value if it is **not null**.
+
+Otherwise, returns the right value.
+
+### Example
+
+```csharp
+string name = null;
+
+string result = name ?? "Guest";
+
+Console.WriteLine(result);
+```
+
+### Output
+
+```text
+Guest
+```
+
+### Another Example
+
+```csharp
+string city = "Jaipur";
+
+Console.WriteLine(city ?? "Delhi");
+```
+
+Output
+
+```text
+Jaipur
+```
+
+### Interview Tip ⭐
+
+`??` is commonly used to provide a **default value** when a variable is `null`.
+
+---
+
+## 7. Difference Between Logical and Bitwise Operators
+
+| Logical Operators         | Bitwise Operators                |        |        |             |
+| ------------------------- | -------------------------------- | ------ | ------ | ----------- |
+| Work with Boolean values  | Work with binary bits            |        |        |             |
+| `&&`, `                   |                                  | `, `!` | `&`, ` | `, `^`, `~` |
+| Mainly used in conditions | Mainly used for bit manipulation |        |        |             |
+
+### Logical Example
+
+```csharp
+bool isStudent = true;
+bool hasID = false;
+
+Console.WriteLine(isStudent && hasID);
+```
+
+Output
+
+```text
+False
+```
+
+---
+
+### Bitwise Example
+
+```csharp
+int a = 5;
+int b = 3;
+
+Console.WriteLine(a & b);
+Console.WriteLine(a | b);
+```
+
+Output
+
+```text
+1
+7
+```
+
+---
+
+# ⭐ Quick Revision
+
+| Operator | Remember                                        |                               |                            |
+| -------- | ----------------------------------------------- | ----------------------------- | -------------------------- |
+| `=`      | Assign Value                                    |                               |                            |
+| `==`     | Compare Values                                  |                               |                            |
+| `++i`    | Increment First                                 |                               |                            |
+| `i++`    | Use First, Then Increment                       |                               |                            |
+| `&&`     | Logical AND (Short-Circuit)                     |                               |                            |
+| `&`      | Bitwise AND / Always Evaluates                  |                               |                            |
+| `        |                                                 | `                             | Logical OR (Short-Circuit) |
+| `        | `                                               | Bitwise OR / Always Evaluates |                            |
+| `?:`     | Short Form of `if-else`                         |                               |                            |
+| `??`     | Returns Default Value if Left Operand is `null` |                               |                            |
+
+---
+
+# 🎯 Top Interview Questions
+
+### Q1. What is the difference between `=` and `==`?
+
+**Answer:** `=` assigns a value to a variable, whereas `==` compares two values and returns `true` or `false`.
+
+---
+
+### Q2. What is the difference between `++i` and `i++`?
+
+**Answer:** `++i` increments the value before it is used, while `i++` uses the current value first and increments it afterward.
+
+---
+
+### Q3. What is Short-Circuit Evaluation?
+
+**Answer:** Short-circuit evaluation means the second condition is skipped if the result can already be determined from the first condition. It is used by `&&` and `||`.
+
+---
+
+### Q4. What is the difference between `&&` and `&`?
+
+**Answer:** `&&` uses short-circuit evaluation and may skip the second condition, while `&` always evaluates both operands.
+
+---
+
+### Q5. What is the difference between `||` and `|`?
+
+**Answer:** `||` uses short-circuit evaluation and may skip the second condition, while `|` always evaluates both operands.
+
+---
+
+### Q6. What is the Ternary Operator?
+
+**Answer:** The ternary operator (`?:`) is a concise way to write an `if-else` statement.
+
+---
+
+### Q7. What is the Null-Coalescing Operator?
+
+**Answer:** The `??` operator returns the left operand if it is not `null`; otherwise, it returns the right operand.
+
+---
+
+### Q8. What is the difference between Logical and Bitwise Operators?
+
+**Answer:** Logical operators work with Boolean expressions, while bitwise operators work on the binary representation of integer values.
+
+# Keywords in C#
+
+## What are Keywords?
+
+**Keywords** are **reserved words** in C# that have a predefined meaning for the compiler.
+
+These words are part of the C# language syntax and **cannot be used as variable names, method names, or class names** (unless prefixed with `@`).
+
+### Example
+
+```csharp
+int age = 20;
+```
+
+Here:
+
+* `int` → Keyword
+* `age` → Variable
+* `20` → Literal
+
+---
+
+# Why are Keywords Important?
+
+Keywords tell the compiler what action to perform.
+
+For example:
+
+* `if` → Makes a decision.
+* `for` → Creates a loop.
+* `class` → Defines a class.
+* `return` → Returns a value from a method.
+
+---
+
+# Types of Keywords in C#
+
+There are three main categories:
+
+1. Reserved Keywords
+2. Contextual Keywords
+3. Access Modifiers (also keywords)
+
+---
+
+# 1. Reserved Keywords
+
+These keywords have a fixed meaning and cannot normally be used as identifiers.
+
+### Common Reserved Keywords
+
+| Keyword   | Purpose                                     |
+| --------- | ------------------------------------------- |
+| class     | Defines a class                             |
+| namespace | Defines a namespace                         |
+| using     | Imports a namespace                         |
+| public    | Accessible from anywhere                    |
+| private   | Accessible only inside the class            |
+| protected | Accessible in the class and derived classes |
+| internal  | Accessible within the same assembly         |
+| static    | Belongs to the type, not an object          |
+| void      | Method returns no value                     |
+| return    | Returns a value                             |
+| new       | Creates an object                           |
+| if        | Conditional statement                       |
+| else      | Alternative condition                       |
+| switch    | Multiple conditions                         |
+| case      | Case inside a switch                        |
+| break     | Exits a loop or switch                      |
+| continue  | Skips the current iteration                 |
+| for       | Loop                                        |
+| foreach   | Iterates over a collection                  |
+| while     | Loop                                        |
+| do        | Executes the loop body at least once        |
+| try       | Starts exception handling                   |
+| catch     | Handles an exception                        |
+| finally   | Executes regardless of an exception         |
+| throw     | Throws an exception                         |
+| int       | Integer data type                           |
+| string    | String data type                            |
+| bool      | Boolean data type                           |
+| double    | Double-precision floating-point type        |
+| decimal   | High-precision decimal type                 |
+| true      | Boolean true                                |
+| false     | Boolean false                               |
+| null      | Represents no value                         |
+
+---
+
+# Example
+
+```csharp
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        if (true)
+        {
+            Console.WriteLine("Hello");
+        }
+    }
+}
+```
+
+Keywords used:
+
+* using
+* class
+* static
+* void
+* if
+* true
+
+---
+
+# 2. Contextual Keywords
+
+Contextual keywords have a special meaning only in specific contexts.
+
+Examples:
+
+| Keyword | Usage                                |
+| ------- | ------------------------------------ |
+| var     | Implicitly typed local variable      |
+| async   | Declares an asynchronous method      |
+| await   | Waits for an asynchronous operation  |
+| yield   | Returns elements one at a time       |
+| where   | Generic constraints or LINQ          |
+| partial | Splits a class across multiple files |
+| record  | Defines a record type                |
+| init    | Init-only property setter            |
+| global  | Refers to the global namespace       |
+
+### Example
+
+```csharp
+var name = "Neeraj";
+
+Console.WriteLine(name);
+```
+
+---
+
+# 3. Access Modifier Keywords
+
+These keywords control the accessibility of classes and members.
+
+| Keyword            | Accessibility                                   |
+| ------------------ | ----------------------------------------------- |
+| public             | Accessible from anywhere                        |
+| private            | Accessible only within the same class           |
+| protected          | Accessible within the class and derived classes |
+| internal           | Accessible within the same assembly             |
+| protected internal | Derived classes or same assembly                |
+| private protected  | Derived classes within the same assembly        |
+
+---
+
+# Can We Use Keywords as Variable Names?
+
+Normally, **No**.
+
+This will cause a compile-time error:
+
+```csharp
+int class = 10;
+```
+
+### Correct Way
+
+Use the `@` symbol.
+
+```csharp
+int @class = 10;
+
+Console.WriteLine(@class);
+```
+
+Output
+
+```text
+10
+```
+
+---
+
+# Real-Life Example
+
+Imagine traffic signals.
+
+* Red → Stop
+* Green → Go
+* Yellow → Wait
+
+These words have predefined meanings.
+
+Similarly, C# keywords have predefined meanings for the compiler.
+
+---
+
+# ⭐ Interview Tips
+
+* Keywords are reserved words.
+* They have predefined meanings.
+* Keywords cannot normally be used as identifiers.
+* `@` allows a keyword to be used as an identifier.
+* `var` is a contextual keyword.
+* `class`, `if`, `for`, `return`, `public` are reserved keywords.
+
+---
+
+# ❓Common Interview Questions
+
+### 1. What are Keywords in C#?
+
+**Answer:**
+
+Keywords are reserved words with predefined meanings that are recognized by the C# compiler.
+
+---
+
+### 2. Can we use a keyword as a variable name?
+
+**Answer:**
+
+Not directly.
+
+However, a keyword can be used as an identifier by prefixing it with `@`.
+
+Example:
+
+```csharp
+int @class = 10;
+```
+
+---
+
+### 3. What is the difference between Reserved Keywords and Contextual Keywords?
+
+| Reserved Keywords                | Contextual Keywords                |
+| -------------------------------- | ---------------------------------- |
+| Always reserved                  | Reserved only in specific contexts |
+| Example: `class`, `if`, `return` | Example: `var`, `async`, `await`   |
+
+---
+
+### 4. What is the `var` keyword?
+
+**Answer:**
+
+`var` is a contextual keyword that lets the compiler infer the type of a local variable from the assigned value.
+
+Example:
+
+```csharp
+var age = 25; // Compiler infers int
+```
+
+---
+
+### 5. What is the purpose of the `using` keyword?
+
+**Answer:**
+
+The `using` keyword imports a namespace so that its types can be used without writing the full namespace name.
+
+Example:
+
+```csharp
+using System;
+```
+
+---
+
+### 6. What is the purpose of the `new` keyword?
+
+**Answer:**
+
+The `new` keyword creates an object and allocates memory for it.
+
+Example:
+
+```csharp
+Student s = new Student();
+```
+
+---
+
+### 7. What is the difference between `break` and `continue`?
+
+| break                    | continue                                                    |
+| ------------------------ | ----------------------------------------------------------- |
+| Exits the loop or switch | Skips the current iteration and continues with the next one |
+
+---
+
+# Quick Revision
+
+| Keyword   | Purpose                   |
+| --------- | ------------------------- |
+| class     | Defines a class           |
+| namespace | Defines a namespace       |
+| using     | Imports a namespace       |
+| static    | Belongs to the type       |
+| void      | No return value           |
+| new       | Creates an object         |
+| return    | Returns a value           |
+| if        | Decision making           |
+| for       | Loop                      |
+| foreach   | Collection iteration      |
+| while     | Loop                      |
+| break     | Exit loop/switch          |
+| continue  | Skip current iteration    |
+| try       | Start exception handling  |
+| catch     | Handle exception          |
+| finally   | Always executes           |
+| throw     | Throw an exception        |
+| var       | Implicitly typed variable |
+| async     | Asynchronous method       |
+| await     | Wait for async operation  |
+
+---
+
+# Summary
+
+* Keywords are reserved words in C#.
+* They have predefined meanings for the compiler.
+* They cannot normally be used as identifiers.
+* Contextual keywords have special meanings only in specific situations.
+* The `@` prefix allows a keyword to be used as an identifier.
+
+
+# 🎯 C# Keywords - Interview Questions & Answers
+
+## 1. What are Keywords in C#?
+
+**Answer:**
+
+Keywords are **reserved words** that have a predefined meaning in the C# language. They are recognized by the compiler and cannot normally be used as identifiers.
+
+**Example:**
+
+```csharp
+int age = 25;
+```
+
+Here, `int` is a keyword.
+
+---
+
+## 2. Why are Keywords called Reserved Words?
+
+**Answer:**
+
+Because they are reserved by the C# compiler for specific purposes and cannot normally be used as variable names, method names, or class names.
+
+---
+
+## 3. Can we use a Keyword as a Variable Name?
+
+**Answer:**
+
+Yes, but only by using the `@` symbol.
+
+**Example:**
+
+```csharp
+int @class = 10;
+
+Console.WriteLine(@class);
+```
+
+---
+
+## 4. What is the Difference Between Reserved Keywords and Contextual Keywords?
+
+| Reserved Keywords                        | Contextual Keywords                                         |
+| ---------------------------------------- | ----------------------------------------------------------- |
+| Always reserved                          | Reserved only in specific contexts                          |
+| Cannot normally be used as identifiers   | Can act as normal identifiers outside their special context |
+| Examples: `class`, `int`, `if`, `return` | Examples: `var`, `async`, `await`                           |
+
+---
+
+## 5. What is the `using` Keyword?
+
+**Answer:**
+
+The `using` keyword imports a namespace so that you can use its classes without writing the full namespace name.
+
+**Example:**
+
+```csharp
+using System;
+
+Console.WriteLine("Hello");
+```
+
+---
+
+## 6. What is the `namespace` Keyword?
+
+**Answer:**
+
+A namespace is used to organize related classes, interfaces, enums, and other types. It also helps avoid naming conflicts.
+
+**Example:**
+
+```csharp
+namespace MyApplication
+{
+    class Program
+    {
+    }
+}
+```
+
+---
+
+## 7. What is the `class` Keyword?
+
+**Answer:**
+
+The `class` keyword is used to define a class, which acts as a blueprint for creating objects.
+
+**Example:**
+
+```csharp
+class Student
+{
+}
+```
+
+---
+
+## 8. What is the `new` Keyword?
+
+**Answer:**
+
+The `new` keyword creates an object and allocates memory for it.
+
+**Example:**
+
+```csharp
+Student s = new Student();
+```
+
+---
+
+## 9. What is the `static` Keyword?
+
+**Answer:**
+
+The `static` keyword indicates that a member belongs to the class itself rather than to individual objects.
+
+**Example:**
+
+```csharp
+class MathHelper
+{
+    public static int Square(int x)
+    {
+        return x * x;
+    }
+}
+```
+
+---
+
+## 10. What is the `void` Keyword?
+
+**Answer:**
+
+The `void` keyword indicates that a method does not return any value.
+
+**Example:**
+
+```csharp
+void Display()
+{
+    Console.WriteLine("Hello");
+}
+```
+
+---
+
+## 11. What is the `return` Keyword?
+
+**Answer:**
+
+The `return` keyword exits a method and optionally returns a value to the caller.
+
+**Example:**
+
+```csharp
+int Add(int a, int b)
+{
+    return a + b;
+}
+```
+
+---
+
+## 12. What is the `var` Keyword?
+
+**Answer:**
+
+`var` is a contextual keyword that allows the compiler to infer the variable's type from the assigned value.
+
+**Example:**
+
+```csharp
+var name = "Neeraj";
+```
+
+The compiler treats `name` as a `string`.
+
+---
+
+## 13. What is the Difference Between `var` and `dynamic`?
+
+| var                                | dynamic                       |
+| ---------------------------------- | ----------------------------- |
+| Type is determined at compile time | Type is determined at runtime |
+| Strongly typed                     | Not compile-time type checked |
+| Better performance                 | More flexible but slower      |
+
+---
+
+## 14. What is the `const` Keyword?
+
+**Answer:**
+
+`const` declares a constant whose value cannot be changed after initialization.
+
+**Example:**
+
+```csharp
+const double PI = 3.14159;
+```
+
+---
+
+## 15. What is the Difference Between `const` and `readonly`?
+
+| const                                 | readonly                                 |
+| ------------------------------------- | ---------------------------------------- |
+| Value must be assigned at declaration | Value can be assigned in the constructor |
+| Compile-time constant                 | Runtime constant                         |
+| Implicitly static                     | Instance or static                       |
+
+---
+
+## 16. What is the `this` Keyword?
+
+**Answer:**
+
+The `this` keyword refers to the current instance of the class.
+
+**Example:**
+
+```csharp
+class Student
+{
+    string name;
+
+    public Student(string name)
+    {
+        this.name = name;
+    }
+}
+```
+
+---
+
+## 17. What is the `base` Keyword?
+
+**Answer:**
+
+The `base` keyword is used to access members of the base (parent) class.
+
+**Example:**
+
+```csharp
+class Animal
+{
+    public void Eat()
+    {
+    }
+}
+
+class Dog : Animal
+{
+    public void Test()
+    {
+        base.Eat();
+    }
+}
+```
+
+---
+
+## 18. What is the `abstract` Keyword?
+
+**Answer:**
+
+The `abstract` keyword is used to define incomplete classes or methods that must be implemented by derived classes.
+
+---
+
+## 19. What is the `sealed` Keyword?
+
+**Answer:**
+
+A `sealed` class cannot be inherited by another class.
+
+---
+
+## 20. What is the `virtual` Keyword?
+
+**Answer:**
+
+The `virtual` keyword allows a method to be overridden in a derived class.
+
+---
+
+## 21. What is the `override` Keyword?
+
+**Answer:**
+
+The `override` keyword provides a new implementation of a virtual method from the base class.
+
+---
+
+## 22. What is the `async` Keyword?
+
+**Answer:**
+
+The `async` keyword marks a method as asynchronous so it can use the `await` keyword.
+
+---
+
+## 23. What is the `await` Keyword?
+
+**Answer:**
+
+The `await` keyword pauses the execution of an asynchronous method until the awaited task completes.
+
+---
+
+## 24. What is the Difference Between `break` and `continue`?
+
+| break                    | continue                                                    |
+| ------------------------ | ----------------------------------------------------------- |
+| Exits the loop or switch | Skips the current iteration and continues with the next one |
+
+---
+
+## 25. What is the Difference Between `if` and `switch`?
+
+| if                                    | switch                                                   |
+| ------------------------------------- | -------------------------------------------------------- |
+| Suitable for complex conditions       | Best for checking one expression against multiple values |
+| Supports ranges and logical operators | Best for equality-based multiple choices                 |
+
+---
+
+# ⭐ Rapid-Fire Interview Questions
+
+* What are Keywords in C#?
+* Can Keywords be used as variable names?
+* What is the `using` keyword?
+* What is a `namespace`?
+* What is the `new` keyword?
+* What is the `static` keyword?
+* What is the `var` keyword?
+* What is the difference between `var` and `dynamic`?
+* What is the difference between `const` and `readonly`?
+* What is the `this` keyword?
+* What is the `base` keyword?
+* What is the `abstract` keyword?
+* What is the `sealed` keyword?
+* What is the `virtual` keyword?
+* What is the `override` keyword?
+* What is the `async` keyword?
+* What is the `await` keyword?
+* What is the difference between `break` and `continue`?
+* What is the difference between `if` and `switch`?
+* Which keywords are used for exception handling?
+
+---
+
+# 💡 Interview Tip
+
+For **Fresher interviews**, focus on:
+
+* `using`
+* `namespace`
+* `class`
+* `new`
+* `static`
+* `void`
+* `return`
+* `var`
+* `const`
+* `readonly`
+* `this`
+* `base`
+
+For **1–3 years experienced interviews**, also prepare:
+
+* `abstract`
+* `sealed`
+* `virtual`
+* `override`
+* `async`
+* `await`
+* `yield`
+* `partial`
+* `record`
+* `dynamic`
+
+
+
+
+
