@@ -809,3 +809,747 @@ The decimal part is removed.
 * Use `Parse()` when the input is guaranteed to be valid.
 * Use `TryParse()` for user input because it is the safest option.
 
+
+# C# Fundamentals
+
+## Table of Contents
+
+* What is C#?
+* CLR (Common Language Runtime)
+* CTS (Common Type System)
+* CLS (Common Language Specification)
+* IL Code (Intermediate Language)
+* JIT Compiler (Just-In-Time Compiler)
+* .NET Framework vs .NET Core vs .NET
+* Summary
+
+---
+
+# What is C#?
+
+**C# (pronounced "C-Sharp")** is a modern, object-oriented, strongly typed programming language developed by **Microsoft**. It is used with the **.NET Platform** to build Web Applications, Web APIs, Desktop Applications, Mobile Apps, Cloud Applications, and Unity Games.
+
+### Example
+
+```csharp
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        Console.WriteLine("Hello, World!");
+    }
+}
+```
+
+### Real-Life Example
+
+Think of **C#** as the language you use to write instructions.
+
+Just like English is used to communicate with people, **C# is used to communicate with the .NET Platform**.
+
+### Key Features
+
+* Object-Oriented Programming (OOP)
+* Strongly Typed
+* Type Safe
+* Cross-Platform
+* Automatic Memory Management
+* Rich Base Class Library
+* High Performance
+* Secure
+
+---
+
+## ⭐ Interview Tips
+
+* C# is a **Programming Language**.
+* .NET is a **Development Platform**.
+* C# was developed by **Microsoft**.
+* Lead Designer: **Anders Hejlsberg**.
+* First Released: **2002**.
+
+---
+
+## ❓Interview Questions
+
+### Q1. What is C#?
+
+**Answer:**
+
+C# is a modern, object-oriented, strongly typed programming language developed by Microsoft for building applications on the .NET platform.
+
+---
+
+# CLR (Common Language Runtime)
+
+CLR is the **execution engine** of the .NET Platform.
+
+It is responsible for running .NET applications.
+
+### Responsibilities of CLR
+
+* Memory Management
+* Garbage Collection
+* Security
+* Exception Handling
+* JIT Compilation
+* Thread Management
+
+### Working
+
+```
+C# Code
+
+↓
+
+IL Code
+
+↓
+
+CLR
+
+↓
+
+Machine Code
+
+↓
+
+CPU
+```
+
+### Real-Life Example
+
+Think of CLR as a **Car Engine**.
+
+Without the engine, the car cannot run.
+
+Similarly,
+
+Without CLR,
+
+A C# application cannot execute.
+
+---
+
+## ⭐ Interview Tips
+
+Remember this line:
+
+> CLR executes .NET applications and provides runtime services.
+
+Runtime Services:
+
+* Memory Management
+* Garbage Collection
+* Security
+* Exception Handling
+* JIT Compiler
+
+---
+
+## ❓Interview Questions
+
+### Q1. What is CLR?
+
+**Answer**
+
+CLR (Common Language Runtime) is the execution engine of .NET that manages memory, security, exception handling, garbage collection, and JIT compilation while executing applications.
+
+---
+
+### Q2. What services are provided by CLR?
+
+* Memory Management
+* Garbage Collection
+* Security
+* Exception Handling
+* JIT Compilation
+
+---
+
+# CTS (Common Type System)
+
+CTS stands for **Common Type System**.
+
+It defines all the data types that can be used in .NET languages.
+
+Example:
+
+```
+int
+
+string
+
+double
+
+bool
+```
+
+Whether you write code in C#, VB.NET, or F#, all languages follow the same type system.
+
+### Real-Life Example
+
+Think of CTS as a **dictionary** that defines standard data types for all .NET languages.
+
+---
+
+## ⭐ Interview Tips
+
+Remember:
+
+CTS defines **Types**.
+
+---
+
+## ❓Interview Questions
+
+### Q1. What is CTS?
+
+**Answer**
+
+CTS (Common Type System) defines the data types that all .NET languages use, ensuring type compatibility between languages.
+
+---
+
+### Q2. Why is CTS required?
+
+Because it allows different .NET languages to use the same data types and work together.
+
+---
+
+# CLS (Common Language Specification)
+
+CLS stands for **Common Language Specification**.
+
+CLS defines a common set of rules that every .NET language should follow.
+
+This allows different .NET languages to communicate with each other.
+
+### Example
+
+A class written in C#
+
+can be used inside
+
+VB.NET
+
+because both follow CLS rules.
+
+---
+
+### Real-Life Example
+
+Think of CLS as **traffic rules**.
+
+Every driver follows the same rules.
+
+Similarly,
+
+Every .NET language follows CLS rules.
+
+---
+
+## ⭐ Interview Tips
+
+Remember:
+
+CTS → Types
+
+CLS → Rules
+
+---
+
+## ❓Interview Questions
+
+### Q1. What is CLS?
+
+**Answer**
+
+CLS is a set of rules that all .NET languages follow to ensure language interoperability.
+
+---
+
+### Q2. Difference between CTS and CLS?
+
+| CTS                         | CLS                             |
+| --------------------------- | ------------------------------- |
+| Defines Data Types          | Defines Rules                   |
+| Common Type System          | Common Language Specification   |
+| Used for Type Compatibility | Used for Language Compatibility |
+
+---
+
+# IL Code (Intermediate Language)
+
+IL stands for **Intermediate Language**.
+
+It is also called
+
+* MSIL
+* CIL
+
+When C# code is compiled,
+
+it is first converted into IL Code.
+
+### Flow
+
+```
+C#
+
+↓
+
+IL Code
+
+↓
+
+CLR
+```
+
+IL is **CPU-independent**.
+
+It cannot run directly.
+
+It must be converted into Machine Code.
+
+---
+
+### Example
+
+```
+C# Source Code
+
+↓
+
+Compiler
+
+↓
+
+IL (.exe/.dll)
+```
+
+---
+
+## ⭐ Interview Tips
+
+Remember:
+
+Compiler converts
+
+C#
+
+↓
+
+IL
+
+---
+
+## ❓Interview Questions
+
+### Q1. What is IL Code?
+
+**Answer**
+
+IL (Intermediate Language) is the intermediate code generated by the C# compiler before execution.
+
+---
+
+### Q2. Why is IL required?
+
+It makes .NET applications platform-independent until runtime.
+
+---
+
+# JIT Compiler (Just-In-Time Compiler)
+
+JIT stands for **Just-In-Time Compiler**.
+
+It converts IL Code into Machine Code.
+
+### Flow
+
+```
+C#
+
+↓
+
+IL
+
+↓
+
+JIT
+
+↓
+
+Machine Code
+
+↓
+
+CPU
+```
+
+### Real-Life Example
+
+Imagine IL is a document written in English.
+
+The CPU understands only Machine Language.
+
+JIT works like a translator.
+
+---
+
+## ⭐ Interview Tips
+
+Remember:
+
+Compiler
+
+C#
+
+↓
+
+IL
+
+JIT
+
+IL
+
+↓
+
+Machine Code
+
+---
+
+## ❓Interview Questions
+
+### Q1. What is JIT Compiler?
+
+**Answer**
+
+JIT Compiler converts Intermediate Language (IL) into Machine Code during program execution.
+
+---
+
+### Q2. What is the difference between Compiler and JIT?
+
+| Compiler               | JIT                         |
+| ---------------------- | --------------------------- |
+| Converts C# to IL      | Converts IL to Machine Code |
+| Runs during Build Time | Runs during Runtime         |
+
+---
+
+# .NET Framework vs .NET Core vs .NET
+
+| Feature             | .NET Framework      | .NET Core                 | .NET                |
+| ------------------- | ------------------- | ------------------------- | ------------------- |
+| Release             | 2002                | 2016                      | 2020                |
+| Platform            | Windows Only        | Cross Platform            | Cross Platform      |
+| Performance         | Good                | Better                    | Best                |
+| Open Source         | No                  | Yes                       | Yes                 |
+| Current Development | Maintenance Mode    | Merged into .NET          | Active Development  |
+| Recommended         | Legacy Applications | Older Cross-Platform Apps | Modern Applications |
+
+---
+
+### Real-Life Example
+
+Think of it like mobile phones.
+
+Old Phone
+
+↓
+
+.NET Framework
+
+Smartphone
+
+↓
+
+.NET Core
+
+Latest Flagship Phone
+
+↓
+
+.NET
+
+---
+
+## ⭐ Interview Tips
+
+* .NET Framework → Windows Only
+* .NET Core → Cross Platform
+* .NET (5+) → Modern Unified Platform
+* New applications should use **.NET**.
+
+---
+
+## ❓Interview Questions
+
+### Q1. Difference between .NET Framework and .NET Core?
+
+* Framework supports Windows only.
+* .NET Core supports Windows, Linux, and macOS.
+
+---
+
+### Q2. Should we use .NET Framework today?
+
+Only for maintaining older applications.
+
+For new projects,
+
+Microsoft recommends **.NET**.
+
+---
+
+# Complete Architecture
+
+```
+C# Source Code
+
+        │
+
+        ▼
+
+C# Compiler
+
+        │
+
+        ▼
+
+Intermediate Language (IL)
+
+        │
+
+        ▼
+
+Common Language Runtime (CLR)
+
+ ├── Memory Management
+
+ ├── Garbage Collection
+
+ ├── Security
+
+ ├── Exception Handling
+
+ └── JIT Compiler
+
+        │
+
+        ▼
+
+Machine Code
+
+        │
+
+        ▼
+
+CPU
+```
+
+---
+
+# Summary
+
+| Topic          | Description                                     |
+| -------------- | ----------------------------------------------- |
+| C#             | Programming Language                            |
+| CLR            | Executes .NET Applications                      |
+| CTS            | Defines Common Data Types                       |
+| CLS            | Defines Common Rules                            |
+| IL             | Intermediate Language generated by the Compiler |
+| JIT            | Converts IL into Machine Code                   |
+| .NET Framework | Windows-only platform                           |
+| .NET Core      | Cross-platform platform (pre-.NET 5)            |
+| .NET           | Modern unified cross-platform platform          |
+
+
+
+# CLR (Common Language Runtime)
+
+## What is CLR?
+
+**CLR (Common Language Runtime)** is the **execution engine** of the .NET platform. It is responsible for executing .NET applications and providing various runtime services.
+
+It acts as a bridge between the **Intermediate Language (IL)** and the **Operating System**.
+
+---
+
+# CLR Architecture
+
+```text
+                    C# Source Code
+                           │
+                           ▼
+                   C# Compiler (csc)
+                           │
+                           ▼
+              Intermediate Language (IL)
+                    (.exe / .dll)
+                           │
+                           ▼
+          ┌─────────────────────────────────┐
+          │              CLR                │
+          │---------------------------------│
+          │ • JIT Compiler                  │
+          │ • Garbage Collector             │
+          │ • Memory Management             │
+          │ • Exception Handling            │
+          │ • Security                      │
+          │ • Thread Management             │
+          └─────────────────────────────────┘
+                           │
+                           ▼
+                  Native Machine Code
+                           │
+                           ▼
+                           CPU
+```
+
+---
+
+# Responsibilities of CLR
+
+* Executes .NET applications
+* Converts IL into Machine Code using the JIT Compiler
+* Automatically manages memory
+* Removes unused objects using the Garbage Collector
+* Handles exceptions
+* Provides security
+* Manages threads
+
+---
+
+# Example
+
+```csharp
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        Console.WriteLine("Hello World");
+    }
+}
+```
+
+### Execution Flow
+
+```text
+C# Code
+   │
+   ▼
+Compiler
+   │
+   ▼
+IL Code
+   │
+   ▼
+CLR
+   │
+   ▼
+Machine Code
+   │
+   ▼
+CPU
+```
+
+---
+
+# Real-Life Example
+
+Think of **CLR as the engine of a car**.
+
+* C# Code → Driver
+* CLR → Engine
+* CPU → Wheels
+
+Without the engine, the car cannot move.
+
+Similarly, without the CLR, a .NET application cannot execute.
+
+---
+
+# ⭐ Interview Tips
+
+* CLR stands for **Common Language Runtime**.
+* CLR is the **execution engine** of .NET.
+* CLR executes **IL Code**, not C# source code directly.
+* CLR uses the **JIT Compiler** to convert IL into Machine Code.
+* CLR provides Memory Management, Garbage Collection, Security, Exception Handling, and Thread Management.
+
+---
+
+# ❓Interview Questions
+
+### 1. What is CLR?
+
+**Answer:**
+
+CLR (Common Language Runtime) is the execution engine of the .NET platform. It executes .NET applications and provides runtime services such as memory management, garbage collection, security, exception handling, thread management, and JIT compilation.
+
+---
+
+### 2. What are the responsibilities of CLR?
+
+* Memory Management
+* Garbage Collection
+* JIT Compilation
+* Security
+* Exception Handling
+* Thread Management
+
+---
+
+### 3. Does CLR execute C# code directly?
+
+**Answer:**
+
+No.
+
+The C# Compiler first converts C# code into IL (Intermediate Language). CLR then loads the IL code and uses the JIT Compiler to convert it into Machine Code.
+
+---
+
+### 4. Why is CLR important?
+
+**Answer:**
+
+CLR manages the execution of .NET applications, automatically handles memory, improves security, manages exceptions, and converts IL into Machine Code.
+
+---
+
+### 5. What is the difference between CLR and JIT?
+
+| CLR                        | JIT                          |
+| -------------------------- | ---------------------------- |
+| Execution Engine           | Compiler                     |
+| Executes .NET applications | Converts IL to Machine Code  |
+| Provides runtime services  | Used by CLR during execution |
+
+---
+
+### 6. Can a .NET application run without CLR?
+
+**Answer:**
+
+No. Every .NET application requires the CLR to execute.
+
+---
+
+### 7. Which runtime services are provided by CLR?
+
+* Memory Management
+* Garbage Collection
+* Security
+* Exception Handling
+* Thread Management
+* JIT Compilation
+
+
