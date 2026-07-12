@@ -111,3 +111,133 @@ Today, C# is one of the world's most popular programming languages and is widely
 
 C# is a modern, powerful, and versatile programming language that combines simplicity with high performance. Its strong integration with the .NET platform, rich libraries, and continuous improvements make it one of the best choices for developing modern software applications.
 
+
+
+# Variables in C#
+
+A **variable** is a named memory location used to store data. The value stored in a variable can be changed during program execution.
+
+## Syntax
+
+```csharp
+dataType variableName = value;
+```
+
+## Examples
+
+```csharp
+int age = 22;
+string name = "Neeraj";
+double salary = 45000.50;
+char grade = 'A';
+bool isActive = true;
+```
+
+## Variable Naming Rules
+
+* A variable name must start with a letter or underscore (`_`).
+* It cannot start with a number.
+* It cannot contain spaces.
+* It cannot use C# keywords (unless prefixed with `@`).
+* Variable names are **case-sensitive** (`Age` and `age` are different).
+
+### Valid Variable Names
+
+```csharp
+int age;
+string studentName;
+double totalMarks;
+bool isLoggedIn;
+```
+
+### Invalid Variable Names
+
+```csharp
+int 1age;          // Cannot start with a number
+string student name; // Contains a space
+int class;         // 'class' is a keyword
+```
+
+---
+
+# Data Types in C#
+
+A **data type** specifies the type of value that a variable can store. C# is a **strongly typed** language, which means every variable must have a defined data type.
+
+## Common Value Types
+
+| Data Type | Size     | Range / Description                     | Example                        |
+| --------- | -------- | --------------------------------------- | ------------------------------ |
+| `byte`    | 1 Byte   | 0 to 255                                | `byte age = 25;`               |
+| `sbyte`   | 1 Byte   | -128 to 127                             | `sbyte value = -10;`           |
+| `short`   | 2 Bytes  | -32,768 to 32,767                       | `short marks = 500;`           |
+| `ushort`  | 2 Bytes  | 0 to 65,535                             | `ushort count = 1000;`         |
+| `int`     | 4 Bytes  | -2,147,483,648 to 2,147,483,647         | `int salary = 50000;`          |
+| `uint`    | 4 Bytes  | 0 to 4,294,967,295                      | `uint population = 1000000;`   |
+| `long`    | 8 Bytes  | Very large integers                     | `long distance = 9000000000L;` |
+| `ulong`   | 8 Bytes  | Very large positive integers            | `ulong number = 100000000UL;`  |
+| `float`   | 4 Bytes  | Single-precision decimal                | `float pi = 3.14F;`            |
+| `double`  | 8 Bytes  | Double-precision decimal                | `double price = 199.99;`       |
+| `decimal` | 16 Bytes | High-precision decimal (financial data) | `decimal amount = 9999.99M;`   |
+| `char`    | 2 Bytes  | Single Unicode character                | `char grade = 'A';`            |
+| `bool`    | 1 Byte   | `true` or `false`                       | `bool isActive = true;`        |
+
+---
+
+## Reference Types
+
+| Data Type   | Description                             | Example                      |
+| ----------- | --------------------------------------- | ---------------------------- |
+| `string`    | Stores text                             | `string name = "Neeraj";`    |
+| `object`    | Base type of all C# types               | `object value = 100;`        |
+| `dynamic`   | Type determined at runtime              | `dynamic data = "Hello";`    |
+| `array`     | Stores multiple values of the same type | `int[] numbers = {1,2,3};`   |
+| `class`     | User-defined reference type             | `Student s = new Student();` |
+| `interface` | Defines a contract for classes          | `IStudent student;`          |
+
+---
+
+## Example Program
+
+```csharp
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        int age = 22;
+        string name = "Neeraj";
+        double salary = 45000.50;
+        char grade = 'A';
+        bool isActive = true;
+
+        Console.WriteLine($"Name: {name}");
+        Console.WriteLine($"Age: {age}");
+        Console.WriteLine($"Salary: {salary}");
+        Console.WriteLine($"Grade: {grade}");
+        Console.WriteLine($"Active: {isActive}");
+    }
+}
+```
+
+## Output
+
+```
+Name: Neeraj
+Age: 22
+Salary: 45000.5
+Grade: A
+Active: True
+```
+
+---
+
+# Summary
+
+* A **Variable** is a named memory location used to store data.
+* A **Data Type** defines what type of data a variable can store.
+* C# supports **Value Types** (such as `int`, `char`, `bool`, `double`) and **Reference Types** (such as `string`, `object`, `class`, and `array`).
+* Every variable in C# must be declared with a data type before it is used.
+
+
