@@ -4007,5 +4007,1161 @@ For **1–3 years experienced interviews**, also prepare:
 
 
 
+# Input and Output in C#
+
+## What is Input and Output?
+
+Input means taking data from the user.
+
+Output means displaying data to the user.
+
+In C#, input and output are performed using the **Console** class.
+
+---
+
+# Console.Write()
+
+## What is Console.Write()?
+
+`Console.Write()` displays output on the console **without moving the cursor to the next line**.
+
+### Syntax
+
+```csharp
+Console.Write("Hello");
+```
+
+### Example
+
+```csharp
+Console.Write("Hello ");
+Console.Write("Neeraj");
+```
+
+### Output
+
+```text
+Hello Neeraj
+```
+
+### Interview Tip ⭐
+
+* `Console.Write()` does **not** move to the next line.
+
+---
+
+# Console.WriteLine()
+
+## What is Console.WriteLine()?
+
+`Console.WriteLine()` displays output and **moves the cursor to the next line**.
+
+### Syntax
+
+```csharp
+Console.WriteLine("Hello");
+```
+
+### Example
+
+```csharp
+Console.WriteLine("Hello");
+Console.WriteLine("Neeraj");
+```
+
+### Output
+
+```text
+Hello
+Neeraj
+```
+
+### Interview Tip ⭐
+
+* `Console.WriteLine()` prints the output and moves to the next line.
+
+---
+
+# Difference Between Console.Write() and Console.WriteLine()
+
+| Console.Write()                   | Console.WriteLine()              |
+| --------------------------------- | -------------------------------- |
+| Does not move to the next line    | Moves to the next line           |
+| Output continues on the same line | Each output starts on a new line |
+
+### Example
+
+```csharp
+Console.Write("Hello ");
+Console.Write("World");
+
+Console.WriteLine();
+
+Console.WriteLine("Hello");
+Console.WriteLine("World");
+```
+
+### Output
+
+```text
+Hello World
+Hello
+World
+```
+
+---
+
+# Console.ReadLine()
+
+## What is Console.ReadLine()?
+
+`Console.ReadLine()` reads a complete line of input from the keyboard.
+
+It always returns a **string**.
+
+### Syntax
+
+```csharp
+string name = Console.ReadLine();
+```
+
+### Example
+
+```csharp
+Console.Write("Enter your name: ");
+
+string name = Console.ReadLine();
+
+Console.WriteLine("Welcome " + name);
+```
+
+### Output
+
+```text
+Enter your name: Neeraj
+Welcome Neeraj
+```
+
+---
+
+# Taking Integer Input
+
+Since `Console.ReadLine()` returns a string, it must be converted to an integer.
+
+### Example
+
+```csharp
+Console.Write("Enter Age: ");
+
+int age = Convert.ToInt32(Console.ReadLine());
+
+Console.WriteLine(age);
+```
+
+### Output
+
+```text
+Enter Age: 22
+22
+```
+
+---
+
+# String Concatenation
+
+String concatenation combines two or more strings using the `+` operator.
+
+### Example
+
+```csharp
+string firstName = "Neeraj";
+string lastName = "Lalwani";
+
+Console.WriteLine(firstName + " " + lastName);
+```
+
+### Output
+
+```text
+Neeraj Lalwani
+```
+
+---
+
+# String Interpolation
+
+## What is String Interpolation?
+
+String interpolation is a cleaner way to insert variables into a string.
+
+It uses the `$` symbol.
+
+### Syntax
+
+```csharp
+$"Text {variable}"
+```
+
+### Example
+
+```csharp
+string name = "Neeraj";
+int age = 22;
+
+Console.WriteLine($"My Name is {name} and I am {age} years old.");
+```
+
+### Output
+
+```text
+My Name is Neeraj and I am 22 years old.
+```
+
+---
+
+# Why Use String Interpolation?
+
+Instead of:
+
+```csharp
+Console.WriteLine("Name: " + name + " Age: " + age);
+```
+
+Use:
+
+```csharp
+Console.WriteLine($"Name: {name} Age: {age}");
+```
+
+It is:
+
+* Easier to read
+* Cleaner
+* Recommended by Microsoft
+
+---
+
+# Formatting
+
+Formatting controls how values are displayed.
+
+---
+
+## Composite Formatting
+
+### Example
+
+```csharp
+string name = "Neeraj";
+int age = 22;
+
+Console.WriteLine("Name: {0}, Age: {1}", name, age);
+```
+
+### Output
+
+```text
+Name: Neeraj, Age: 22
+```
+
+---
+
+## Number Formatting
+
+### Example
+
+```csharp
+double price = 1250.5;
+
+Console.WriteLine(price.ToString("F2"));
+```
+
+### Output
+
+```text
+1250.50
+```
+
+---
+
+## Currency Formatting
+
+### Example
+
+```csharp
+double salary = 50000;
+
+Console.WriteLine(salary.ToString("C"));
+```
+
+### Example Output
+
+```text
+₹50,000.00
+```
+
+*(The currency symbol depends on your system's culture settings.)*
+
+---
+
+## Date Formatting
+
+### Example
+
+```csharp
+DateTime today = DateTime.Now;
+
+Console.WriteLine(today.ToString("dd-MM-yyyy"));
+```
+
+### Output
+
+```text
+12-07-2026
+```
+
+---
+
+# Real-Life Example
+
+```csharp
+Console.Write("Enter Your Name: ");
+string name = Console.ReadLine();
+
+Console.Write("Enter Your Age: ");
+int age = Convert.ToInt32(Console.ReadLine());
+
+Console.WriteLine($"Welcome {name}");
+Console.WriteLine($"You are {age} years old.");
+```
+
+### Output
+
+```text
+Enter Your Name: Neeraj
+Enter Your Age: 22
+
+Welcome Neeraj
+You are 22 years old.
+```
+
+---
+
+# ⭐ Interview Tips
+
+* `Console.Write()` prints on the same line.
+* `Console.WriteLine()` prints and moves to the next line.
+* `Console.ReadLine()` always returns a **string**.
+* Use `Convert.ToInt32()` to convert string input to an integer.
+* String interpolation uses the `$` symbol.
+* `{}` placeholders are used inside interpolated strings.
+* String interpolation is preferred over string concatenation because it is more readable.
+
+---
+
+# ❓Common Interview Questions
+
+### 1. What is the difference between `Console.Write()` and `Console.WriteLine()`?
+
+**Answer:**
+
+`Console.Write()` prints output on the same line, while `Console.WriteLine()` prints output and moves the cursor to the next line.
+
+---
+
+### 2. What does `Console.ReadLine()` return?
+
+**Answer:**
+
+It always returns a **string**.
+
+---
+
+### 3. Why do we use `Convert.ToInt32(Console.ReadLine())`?
+
+**Answer:**
+
+Because `Console.ReadLine()` returns a string, and `Convert.ToInt32()` converts that string into an integer.
+
+---
+
+### 4. What is String Interpolation?
+
+**Answer:**
+
+String interpolation is a feature that allows variables to be embedded directly inside a string using the `$` symbol and `{}` placeholders.
+
+---
+
+### 5. What is the difference between String Concatenation and String Interpolation?
+
+| String Concatenation  | String Interpolation           |
+| --------------------- | ------------------------------ |
+| Uses the `+` operator | Uses the `$` symbol and `{}`   |
+| Less readable         | More readable                  |
+| More typing           | Cleaner and easier to maintain |
+
+---
+
+### 6. What is Composite Formatting?
+
+**Answer:**
+
+Composite formatting uses numbered placeholders such as `{0}`, `{1}`, etc., to insert values into a string.
+
+Example:
+
+```csharp
+Console.WriteLine("Name: {0}", name);
+```
+
+---
+
+### 7. Which is the recommended way to build strings in modern C#?
+
+**Answer:**
+
+String Interpolation is the recommended approach because it is cleaner, easier to read, and easier to maintain.
+
+---
+
+# Quick Revision
+
+| Method / Feature         | Purpose                                |
+| ------------------------ | -------------------------------------- |
+| `Console.Write()`        | Prints without a new line              |
+| `Console.WriteLine()`    | Prints and moves to a new line         |
+| `Console.ReadLine()`     | Reads user input as a string           |
+| `Convert.ToInt32()`      | Converts string input to an integer    |
+| `+`                      | String concatenation                   |
+| `$""`                    | String interpolation                   |
+| `{0}`, `{1}`             | Composite formatting                   |
+| `ToString("F2")`         | Formats a number with 2 decimal places |
+| `ToString("C")`          | Currency formatting                    |
+| `ToString("dd-MM-yyyy")` | Date formatting                        |
+
+
+# Input and Output in C#
+
+## What is Input and Output?
+
+Input means taking data from the user.
+
+Output means displaying data to the user.
+
+In C#, input and output are performed using the **Console** class.
+
+---
+
+# Console.Write()
+
+## What is Console.Write()?
+
+`Console.Write()` displays output on the console **without moving the cursor to the next line**.
+
+### Syntax
+
+```csharp
+Console.Write("Hello");
+```
+
+### Example
+
+```csharp
+Console.Write("Hello ");
+Console.Write("Neeraj");
+```
+
+### Output
+
+```text
+Hello Neeraj
+```
+
+### Interview Tip ⭐
+
+* `Console.Write()` does **not** move to the next line.
+
+---
+
+# Console.WriteLine()
+
+## What is Console.WriteLine()?
+
+`Console.WriteLine()` displays output and **moves the cursor to the next line**.
+
+### Syntax
+
+```csharp
+Console.WriteLine("Hello");
+```
+
+### Example
+
+```csharp
+Console.WriteLine("Hello");
+Console.WriteLine("Neeraj");
+```
+
+### Output
+
+```text
+Hello
+Neeraj
+```
+
+### Interview Tip ⭐
+
+* `Console.WriteLine()` prints the output and moves to the next line.
+
+---
+
+# Difference Between Console.Write() and Console.WriteLine()
+
+| Console.Write()                   | Console.WriteLine()              |
+| --------------------------------- | -------------------------------- |
+| Does not move to the next line    | Moves to the next line           |
+| Output continues on the same line | Each output starts on a new line |
+
+### Example
+
+```csharp
+Console.Write("Hello ");
+Console.Write("World");
+
+Console.WriteLine();
+
+Console.WriteLine("Hello");
+Console.WriteLine("World");
+```
+
+### Output
+
+```text
+Hello World
+Hello
+World
+```
+
+---
+
+# Console.ReadLine()
+
+## What is Console.ReadLine()?
+
+`Console.ReadLine()` reads a complete line of input from the keyboard.
+
+It always returns a **string**.
+
+### Syntax
+
+```csharp
+string name = Console.ReadLine();
+```
+
+### Example
+
+```csharp
+Console.Write("Enter your name: ");
+
+string name = Console.ReadLine();
+
+Console.WriteLine("Welcome " + name);
+```
+
+### Output
+
+```text
+Enter your name: Neeraj
+Welcome Neeraj
+```
+
+---
+
+# Taking Integer Input
+
+Since `Console.ReadLine()` returns a string, it must be converted to an integer.
+
+### Example
+
+```csharp
+Console.Write("Enter Age: ");
+
+int age = Convert.ToInt32(Console.ReadLine());
+
+Console.WriteLine(age);
+```
+
+### Output
+
+```text
+Enter Age: 22
+22
+```
+
+---
+
+# String Concatenation
+
+String concatenation combines two or more strings using the `+` operator.
+
+### Example
+
+```csharp
+string firstName = "Neeraj";
+string lastName = "Lalwani";
+
+Console.WriteLine(firstName + " " + lastName);
+```
+
+### Output
+
+```text
+Neeraj Lalwani
+```
+
+---
+
+# String Interpolation
+
+## What is String Interpolation?
+
+String interpolation is a cleaner way to insert variables into a string.
+
+It uses the `$` symbol.
+
+### Syntax
+
+```csharp
+$"Text {variable}"
+```
+
+### Example
+
+```csharp
+string name = "Neeraj";
+int age = 22;
+
+Console.WriteLine($"My Name is {name} and I am {age} years old.");
+```
+
+### Output
+
+```text
+My Name is Neeraj and I am 22 years old.
+```
+
+---
+
+# Why Use String Interpolation?
+
+Instead of:
+
+```csharp
+Console.WriteLine("Name: " + name + " Age: " + age);
+```
+
+Use:
+
+```csharp
+Console.WriteLine($"Name: {name} Age: {age}");
+```
+
+It is:
+
+* Easier to read
+* Cleaner
+* Recommended by Microsoft
+
+---
+
+# Formatting
+
+Formatting controls how values are displayed.
+
+---
+
+## Composite Formatting
+
+### Example
+
+```csharp
+string name = "Neeraj";
+int age = 22;
+
+Console.WriteLine("Name: {0}, Age: {1}", name, age);
+```
+
+### Output
+
+```text
+Name: Neeraj, Age: 22
+```
+
+---
+
+## Number Formatting
+
+### Example
+
+```csharp
+double price = 1250.5;
+
+Console.WriteLine(price.ToString("F2"));
+```
+
+### Output
+
+```text
+1250.50
+```
+
+---
+
+## Currency Formatting
+
+### Example
+
+```csharp
+double salary = 50000;
+
+Console.WriteLine(salary.ToString("C"));
+```
+
+### Example Output
+
+```text
+₹50,000.00
+```
+
+*(The currency symbol depends on your system's culture settings.)*
+
+---
+
+## Date Formatting
+
+### Example
+
+```csharp
+DateTime today = DateTime.Now;
+
+Console.WriteLine(today.ToString("dd-MM-yyyy"));
+```
+
+### Output
+
+```text
+12-07-2026
+```
+
+---
+
+# Real-Life Example
+
+```csharp
+Console.Write("Enter Your Name: ");
+string name = Console.ReadLine();
+
+Console.Write("Enter Your Age: ");
+int age = Convert.ToInt32(Console.ReadLine());
+
+Console.WriteLine($"Welcome {name}");
+Console.WriteLine($"You are {age} years old.");
+```
+
+### Output
+
+```text
+Enter Your Name: Neeraj
+Enter Your Age: 22
+
+Welcome Neeraj
+You are 22 years old.
+```
+
+---
+
+# ⭐ Interview Tips
+
+* `Console.Write()` prints on the same line.
+* `Console.WriteLine()` prints and moves to the next line.
+* `Console.ReadLine()` always returns a **string**.
+* Use `Convert.ToInt32()` to convert string input to an integer.
+* String interpolation uses the `$` symbol.
+* `{}` placeholders are used inside interpolated strings.
+* String interpolation is preferred over string concatenation because it is more readable.
+
+---
+
+# ❓Common Interview Questions
+
+### 1. What is the difference between `Console.Write()` and `Console.WriteLine()`?
+
+**Answer:**
+
+`Console.Write()` prints output on the same line, while `Console.WriteLine()` prints output and moves the cursor to the next line.
+
+---
+
+### 2. What does `Console.ReadLine()` return?
+
+**Answer:**
+
+It always returns a **string**.
+
+---
+
+### 3. Why do we use `Convert.ToInt32(Console.ReadLine())`?
+
+**Answer:**
+
+Because `Console.ReadLine()` returns a string, and `Convert.ToInt32()` converts that string into an integer.
+
+---
+
+### 4. What is String Interpolation?
+
+**Answer:**
+
+String interpolation is a feature that allows variables to be embedded directly inside a string using the `$` symbol and `{}` placeholders.
+
+---
+
+### 5. What is the difference between String Concatenation and String Interpolation?
+
+| String Concatenation  | String Interpolation           |
+| --------------------- | ------------------------------ |
+| Uses the `+` operator | Uses the `$` symbol and `{}`   |
+| Less readable         | More readable                  |
+| More typing           | Cleaner and easier to maintain |
+
+---
+
+### 6. What is Composite Formatting?
+
+**Answer:**
+
+Composite formatting uses numbered placeholders such as `{0}`, `{1}`, etc., to insert values into a string.
+
+Example:
+
+```csharp
+Console.WriteLine("Name: {0}", name);
+```
+
+---
+
+### 7. Which is the recommended way to build strings in modern C#?
+
+**Answer:**
+
+String Interpolation is the recommended approach because it is cleaner, easier to read, and easier to maintain.
+
+---
+
+# Quick Revision
+
+| Method / Feature         | Purpose                                |
+| ------------------------ | -------------------------------------- |
+| `Console.Write()`        | Prints without a new line              |
+| `Console.WriteLine()`    | Prints and moves to a new line         |
+| `Console.ReadLine()`     | Reads user input as a string           |
+| `Convert.ToInt32()`      | Converts string input to an integer    |
+| `+`                      | String concatenation                   |
+| `$""`                    | String interpolation                   |
+| `{0}`, `{1}`             | Composite formatting                   |
+| `ToString("F2")`         | Formats a number with 2 decimal places |
+| `ToString("C")`          | Currency formatting                    |
+| `ToString("dd-MM-yyyy")` | Date formatting                        |
+
+
+# 🎯 C# Input & Output - Interview Questions
+
+## Basic Level Questions
+
+### 1. What is the Console class in C#?
+
+**Answer:**
+
+The `Console` class is used to perform input and output operations in a console application.
+
+Example:
+
+```csharp
+Console.WriteLine("Hello World");
+```
+
+---
+
+### 2. What is the difference between `Console.Write()` and `Console.WriteLine()`?
+
+**Answer:**
+
+| Console.Write()         | Console.WriteLine()               |
+| ----------------------- | --------------------------------- |
+| Prints on the same line | Prints and moves to the next line |
+| Does not add a newline  | Adds a newline automatically      |
+
+---
+
+### 3. What does `Console.ReadLine()` do?
+
+**Answer:**
+
+`Console.ReadLine()` reads an entire line of input from the keyboard and returns it as a **string**.
+
+---
+
+### 4. What is the return type of `Console.ReadLine()`?
+
+**Answer:**
+
+```text
+string
+```
+
+Even if the user enters a number like **25**, it is returned as `"25"` (a string).
+
+---
+
+### 5. Why do we use `Convert.ToInt32(Console.ReadLine())`?
+
+**Answer:**
+
+Because `Console.ReadLine()` always returns a string. `Convert.ToInt32()` converts that string into an integer.
+
+Example:
+
+```csharp
+int age = Convert.ToInt32(Console.ReadLine());
+```
+
+---
+
+### 6. What happens if the user enters "ABC" instead of a number?
+
+**Answer:**
+
+A **FormatException** is thrown because `"ABC"` cannot be converted to an integer.
+
+---
+
+### 7. How can we avoid a FormatException?
+
+**Answer:**
+
+Use `int.TryParse()` instead of `Convert.ToInt32()`.
+
+Example:
+
+```csharp
+int age;
+
+if (int.TryParse(Console.ReadLine(), out age))
+{
+    Console.WriteLine("Valid Input");
+}
+else
+{
+    Console.WriteLine("Invalid Input");
+}
+```
+
+---
+
+## String Questions
+
+### 8. What is String Concatenation?
+
+**Answer:**
+
+Combining two or more strings using the `+` operator.
+
+Example:
+
+```csharp
+string name = "Neeraj";
+
+Console.WriteLine("Hello " + name);
+```
+
+---
+
+### 9. What is String Interpolation?
+
+**Answer:**
+
+String interpolation inserts variables directly into a string using the `$` symbol and `{}` placeholders.
+
+Example:
+
+```csharp
+Console.WriteLine($"Hello {name}");
+```
+
+---
+
+### 10. Why is String Interpolation preferred?
+
+**Answer:**
+
+Because it is:
+
+* More readable
+* Easier to maintain
+* Less error-prone
+* Recommended in modern C#
+
+---
+
+### 11. What is Composite Formatting?
+
+**Answer:**
+
+Composite formatting uses numbered placeholders (`{0}`, `{1}`, etc.) to insert values into a string.
+
+Example:
+
+```csharp
+Console.WriteLine("Name: {0}", name);
+```
+
+---
+
+### 12. What is the difference between String Concatenation and String Interpolation?
+
+| Concatenation     | Interpolation     |
+| ----------------- | ----------------- |
+| Uses `+` operator | Uses `$` and `{}` |
+| Less readable     | More readable     |
+| More typing       | Cleaner syntax    |
+
+---
+
+## Formatting Questions
+
+### 13. How do you display a number with two decimal places?
+
+**Answer:**
+
+```csharp
+double price = 123.456;
+
+Console.WriteLine(price.ToString("F2"));
+```
+
+Output:
+
+```text
+123.46
+```
+
+---
+
+### 14. How do you display a value as currency?
+
+**Answer:**
+
+```csharp
+double salary = 50000;
+
+Console.WriteLine(salary.ToString("C"));
+```
+
+---
+
+### 15. How do you display the current date in `dd-MM-yyyy` format?
+
+**Answer:**
+
+```csharp
+Console.WriteLine(DateTime.Now.ToString("dd-MM-yyyy"));
+```
+
+---
+
+## Practical Questions
+
+### 16. Write a program to take the user's name and display it.
+
+```csharp
+Console.Write("Enter Name: ");
+
+string name = Console.ReadLine();
+
+Console.WriteLine($"Welcome {name}");
+```
+
+---
+
+### 17. Write a program to input two numbers and print their sum.
+
+```csharp
+Console.Write("Enter First Number: ");
+int a = Convert.ToInt32(Console.ReadLine());
+
+Console.Write("Enter Second Number: ");
+int b = Convert.ToInt32(Console.ReadLine());
+
+Console.WriteLine($"Sum = {a + b}");
+```
+
+---
+
+### 18. What is the difference between `Convert.ToInt32()` and `int.Parse()`?
+
+| Convert.ToInt32()               | int.Parse()                                |
+| ------------------------------- | ------------------------------------------ |
+| Handles `null` by returning `0` | Throws an exception if the input is `null` |
+| Converts compatible types       | Expects a valid numeric string             |
+
+---
+
+### 19. Which is safer: `Convert.ToInt32()` or `int.TryParse()`?
+
+**Answer:**
+
+`int.TryParse()` is safer because it does not throw an exception for invalid input.
+
+---
+
+### 20. Which is the best method for validating user input?
+
+**Answer:**
+
+`TryParse()` methods (`int.TryParse()`, `double.TryParse()`, etc.) are recommended because they safely handle invalid input.
+
+---
+
+# ⭐ Rapid Fire Interview Questions
+
+* What is the Console class?
+* What is the difference between `Console.Write()` and `Console.WriteLine()`?
+* What is the return type of `Console.ReadLine()`?
+* Why do we use `Convert.ToInt32(Console.ReadLine())`?
+* What exception occurs if the input is invalid?
+* How can you avoid a `FormatException`?
+* What is String Concatenation?
+* What is String Interpolation?
+* What is Composite Formatting?
+* Which is better: Concatenation or Interpolation?
+* What is `int.TryParse()`?
+* Difference between `Convert.ToInt32()` and `int.Parse()`?
+* Difference between `int.Parse()` and `int.TryParse()`?
+* How do you format a number to two decimal places?
+* How do you display currency?
+* How do you format a date?
+
+---
+
+# ⭐ Interview Tips
+
+* `Console.ReadLine()` always returns a **string**.
+* Always validate numeric input using `TryParse()` in production code.
+* Prefer **String Interpolation** over string concatenation.
+* Know the differences between `Convert.ToInt32()`, `int.Parse()`, and `int.TryParse()`.
+* Be familiar with basic formatting methods like `"F2"`, `"C"`, and `"dd-MM-yyyy"`.
+
+
 
 
