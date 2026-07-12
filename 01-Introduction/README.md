@@ -334,3 +334,171 @@ In this example:
 * Reference types store their objects in the heap, while their references are stored in the stack.
 * The .NET Garbage Collector automatically removes unused objects from the heap.
 
+
+# Stack and Heap Memory in C#
+
+In C#, memory is mainly divided into two parts:
+
+* **Stack Memory**
+* **Heap Memory**
+
+Understanding these two memory areas helps you learn **Value Types** and **Reference Types**.
+
+---
+
+# Stack Memory
+
+**Stack** is a fast memory area used to store:
+
+* Local variables
+* Method parameters
+* Value types (`int`, `char`, `bool`, `double`, etc.)
+* References (addresses) of objects
+
+### Example
+
+```csharp
+int age = 22;
+char grade = 'A';
+bool isActive = true;
+```
+
+**Memory**
+
+```text
+Stack
+
+age = 22
+grade = 'A'
+isActive = true
+```
+
+Here, the actual values are stored directly in the **Stack**.
+
+---
+
+# Heap Memory
+
+**Heap** is used to store **objects** created using the `new` keyword.
+
+### Example
+
+```csharp
+class Student
+{
+    public string Name;
+}
+
+Student student = new Student();
+```
+
+**Memory**
+
+```text
+Stack                     Heap
+
+student ---------------> Student Object
+                          Name = null
+```
+
+Here:
+
+* `student` stores only the **reference (address)** in the **Stack**.
+* The actual `Student` object is stored in the **Heap**.
+
+---
+
+# Value Type Example
+
+```csharp
+int a = 10;
+int b = a;
+
+b = 20;
+```
+
+**Memory**
+
+```text
+Stack
+
+a = 10
+
+b = 20
+```
+
+**Output**
+
+```text
+a = 10
+b = 20
+```
+
+**Explanation**
+
+`b` receives a copy of `a`. Changing `b` does **not** affect `a`.
+
+---
+
+# Reference Type Example
+
+```csharp
+class Student
+{
+    public string Name;
+}
+
+Student s1 = new Student();
+Student s2 = s1;
+
+s2.Name = "Neeraj";
+
+Console.WriteLine(s1.Name);
+```
+
+**Memory**
+
+```text
+Stack
+
+s1 -----------┐
+              │
+              ▼
+s2 -----------┘
+
+Heap
+
+Student Object
+Name = "Neeraj"
+```
+
+**Output**
+
+```text
+Neeraj
+```
+
+**Explanation**
+
+Both `s1` and `s2` point to the **same object**. Changing the object through one reference is visible through the other.
+
+---
+
+# Stack vs Heap
+
+| Stack                                                   | Heap                                            |
+| ------------------------------------------------------- | ----------------------------------------------- |
+| Stores value types                                      | Stores objects                                  |
+| Stores local variables                                  | Stores reference type objects                   |
+| Faster                                                  | Slower than Stack                               |
+| Memory is released automatically after method execution | Memory is managed by the Garbage Collector (GC) |
+
+---
+
+# Key Points
+
+* **Stack** stores actual values for **Value Types**.
+* **Heap** stores actual objects for **Reference Types**.
+* The `new` keyword creates an object in the **Heap**.
+* Reference variables store only the object's **memory address**.
+
