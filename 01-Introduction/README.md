@@ -502,3 +502,310 @@ Both `s1` and `s2` point to the **same object**. Changing the object through one
 * The `new` keyword creates an object in the **Heap**.
 * Reference variables store only the object's **memory address**.
 
+
+
+# Type Casting in C#
+
+**Type Casting** is the process of converting a value from one data type to another.
+
+There are two types of type casting in C#:
+
+1. **Implicit Casting (Automatic)**
+2. **Explicit Casting (Manual)**
+
+---
+
+# 1. Implicit Casting (Automatic)
+
+Implicit casting is performed automatically by the compiler when there is **no risk of data loss**.
+
+### Example
+
+```csharp
+int number = 100;
+double value = number;
+
+Console.WriteLine(number);
+Console.WriteLine(value);
+```
+
+### Output
+
+```text
+100
+100
+```
+
+### Explanation
+
+* `int` is automatically converted to `double`.
+* No data is lost during the conversion.
+
+---
+
+# 2. Explicit Casting (Manual)
+
+Explicit casting is performed manually by the programmer when there is a **possibility of data loss**.
+
+### Example
+
+```csharp
+double value = 99.99;
+int number = (int)value;
+
+Console.WriteLine(number);
+```
+
+### Output
+
+```text
+99
+```
+
+### Explanation
+
+* `99.99` is converted to `99`.
+* The decimal part (`.99`) is removed.
+
+---
+
+# Using Convert Class
+
+The `Convert` class is used to convert one data type to another.
+
+### Example
+
+```csharp
+string age = "22";
+
+int result = Convert.ToInt32(age);
+
+Console.WriteLine(result);
+```
+
+### Output
+
+```text
+22
+```
+
+---
+
+# Using Parse()
+
+The `Parse()` method converts a string into another data type.
+
+### Example
+
+```csharp
+string number = "150";
+
+int value = int.Parse(number);
+
+Console.WriteLine(value);
+```
+
+### Output
+
+```text
+150
+```
+
+---
+
+# Using TryParse()
+
+`TryParse()` safely converts a string without throwing an exception for invalid input.
+
+### Example
+
+```csharp
+string input = "123";
+
+if (int.TryParse(input, out int result))
+{
+    Console.WriteLine(result);
+}
+else
+{
+    Console.WriteLine("Invalid Number");
+}
+```
+
+### Output
+
+```text
+123
+```
+
+---
+
+# Parse() vs Convert() vs TryParse()
+
+| Feature             | Parse()          | Convert.ToInt32()   | TryParse()      |
+| ------------------- | ---------------- | ------------------- | --------------- |
+| Input Type          | String           | Any compatible type | String          |
+| Invalid Input       | Throws Exception | Throws Exception    | Returns `false` |
+| Null Value          | Throws Exception | Returns `0`         | Returns `false` |
+| Safe for User Input | ❌ No             | ⚠️ Limited          | ✅ Yes           |
+
+---
+
+# Implicit vs Explicit Casting
+
+| Implicit Casting          | Explicit Casting          |
+| ------------------------- | ------------------------- |
+| Automatic conversion      | Manual conversion         |
+| No data loss              | Data loss may occur       |
+| Safe conversion           | Programmer is responsible |
+| Example: `int` → `double` | Example: `double` → `int` |
+
+---
+
+# Common Conversion Methods
+
+| Method                | Description                       |
+| --------------------- | --------------------------------- |
+| `Convert.ToInt32()`   | Converts to `int`                 |
+| `Convert.ToDouble()`  | Converts to `double`              |
+| `Convert.ToDecimal()` | Converts to `decimal`             |
+| `Convert.ToBoolean()` | Converts to `bool`                |
+| `Convert.ToString()`  | Converts to `string`              |
+| `int.Parse()`         | Converts a string to `int`        |
+| `double.Parse()`      | Converts a string to `double`     |
+| `int.TryParse()`      | Safely converts a string to `int` |
+
+---
+
+# ⭐ Interview Tips
+
+### 1. What is Type Casting?
+
+> Type Casting is the process of converting one data type into another.
+
+---
+
+### 2. Why is `int` → `double` Implicit?
+
+Because there is **no data loss**.
+
+```csharp
+int num = 100;
+double value = num;
+```
+
+---
+
+### 3. Why is `double` → `int` Explicit?
+
+Because the decimal part may be lost.
+
+```csharp
+double value = 99.99;
+int num = (int)value;
+```
+
+Output
+
+```text
+99
+```
+
+---
+
+### 4. Difference between Parse(), Convert(), and TryParse()
+
+* `Parse()` throws an exception for invalid input.
+* `Convert.ToInt32(null)` returns `0`.
+* `TryParse()` returns `false` instead of throwing an exception.
+
+---
+
+### 5. Which method is best for user input?
+
+✅ **`TryParse()`**
+
+Reason:
+
+* Prevents application crashes.
+* Handles invalid input safely.
+
+---
+
+### 6. Does Explicit Casting always lose data?
+
+No.
+
+It **may** lose data depending on the conversion.
+
+Example:
+
+```csharp
+double d = 10.0;
+int i = (int)d;
+```
+
+No data is lost.
+
+But
+
+```csharp
+double d = 10.75;
+int i = (int)d;
+```
+
+Output
+
+```text
+10
+```
+
+The decimal part is removed.
+
+---
+
+# ❓Common Interview Questions
+
+### Q1. What is Type Casting?
+
+**Answer:** Type Casting is the process of converting one data type into another.
+
+---
+
+### Q2. What are the types of Type Casting?
+
+* Implicit Casting
+* Explicit Casting
+
+---
+
+### Q3. What is the difference between Implicit and Explicit Casting?
+
+* Implicit casting is automatic and does not cause data loss.
+* Explicit casting is manual and may cause data loss.
+
+---
+
+### Q4. What is the difference between Parse(), Convert(), and TryParse()?
+
+* `Parse()` throws an exception for invalid input.
+* `Convert()` returns `0` for `null`.
+* `TryParse()` safely returns `true` or `false`.
+
+---
+
+### Q5. Which method should be used for user input?
+
+**Answer:** `TryParse()`
+
+---
+
+# Summary
+
+* Type Casting converts one data type into another.
+* Implicit Casting is automatic and safe.
+* Explicit Casting is manual and may lose data.
+* Use `Convert()` for general conversions.
+* Use `Parse()` when the input is guaranteed to be valid.
+* Use `TryParse()` for user input because it is the safest option.
+
