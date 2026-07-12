@@ -241,3 +241,96 @@ Active: True
 * Every variable in C# must be declared with a data type before it is used.
 
 
+
+
+# Stack and Heap Memory in C#
+
+Memory management in C# is primarily divided into two areas: **Stack Memory** and **Heap Memory**. Understanding these memory areas is essential for learning value types, reference types, object creation, and garbage collection.
+
+## Stack Memory
+
+The **Stack** is a fast memory area used to store:
+
+* Local variables
+* Method parameters
+* Value types (`int`, `char`, `bool`, `double`, etc.)
+* References (memory addresses) of reference type objects
+
+### Characteristics of Stack Memory
+
+* Stores local variables and method execution information.
+* Memory allocation and deallocation are automatic.
+* Faster than heap memory.
+* Uses **LIFO (Last In, First Out)** order.
+* Memory is released automatically when a method finishes execution.
+
+### Example
+
+```csharp
+int age = 22;
+double salary = 45000.50;
+char grade = 'A';
+```
+
+These variables are stored directly in the **Stack**.
+
+---
+
+# Heap Memory
+
+The **Heap** is a memory area used to store **reference type objects** created using the `new` keyword.
+
+### Characteristics of Heap Memory
+
+* Stores objects and dynamically allocated data.
+* Used for reference types such as classes, arrays, and strings.
+* Memory allocation is slower than the stack.
+* Memory is automatically cleaned by the **Garbage Collector (GC)** when objects are no longer referenced.
+
+### Example
+
+```csharp
+Student student = new Student();
+```
+
+The `Student` object is created in the **Heap**, while the variable `student` stores only the reference (memory address) in the **Stack**.
+
+---
+
+# Stack vs Heap
+
+| Stack                                    | Heap                                  |
+| ---------------------------------------- | ------------------------------------- |
+| Stores local variables                   | Stores objects and dynamic data       |
+| Faster memory allocation                 | Slower memory allocation              |
+| Automatically managed                    | Managed by the Garbage Collector (GC) |
+| Stores value types and object references | Stores reference type objects         |
+| Uses LIFO (Last In, First Out)           | No LIFO structure                     |
+
+---
+
+# Memory Illustration
+
+```text
+Stack                          Heap
+------                         -----------------
+age = 22
+student ---------------------> Student Object
+                               Name = "Neeraj"
+                               Age = 22
+```
+
+In this example:
+
+* `age` is stored directly in the **Stack**.
+* `student` stores only the memory address in the **Stack**.
+* The actual `Student` object is stored in the **Heap**.
+
+## Summary
+
+* **Stack** stores local variables, method information, value types, and references.
+* **Heap** stores objects created using the `new` keyword.
+* Value types store their actual values in the stack.
+* Reference types store their objects in the heap, while their references are stored in the stack.
+* The .NET Garbage Collector automatically removes unused objects from the heap.
+
